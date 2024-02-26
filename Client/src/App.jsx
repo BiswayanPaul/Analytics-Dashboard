@@ -8,6 +8,8 @@ import axios from "axios";
 import { Toaster } from "react-hot-toast";
 import { UserContextProvider } from "../context/userContext.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import AssetsCollection from "./pages/AssetsCollection.jsx";
+import PerformanceMatrixCollection from "./pages/PerformanceMatrixCollection.jsx";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
@@ -21,6 +23,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/assetcollection" element={<AssetsCollection />} />
+        <Route
+          path="/performancematrixcollection"
+          element={<PerformanceMatrixCollection />}
+        />
       </Routes>
     </UserContextProvider>
   );
