@@ -23,9 +23,12 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/assetcollection" element={<AssetsCollection />} />
         <Route
-          path="/performancematrixcollection"
+          path="/dashboard/assetcollection"
+          element={<AssetsCollection />}
+        />
+        <Route
+          path="/dashboard/performancematrixcollection"
           element={<PerformanceMatrixCollection />}
         />
       </Routes>

@@ -1,7 +1,9 @@
 const User = require("../Models/user");
+const Asset = require("../Models/AssetsCollection");
 const { hashPassword, comparePassword } = require("../Helpers/auth");
 const jwt = require("jsonwebtoken");
 
+let i = 1;
 
 const test = (req, res) => {
     res.json("Test is working");
@@ -90,9 +92,31 @@ const getProfile = (req, res) => {
 
 }
 
+const getAssets = async (req, res) => {
+    try {
+        const { AssetName, AssetType, Location, PurchaseDate, InitialCost, OperationalStatus } = req.body;
+
+        const asset = await Asset.create({
+            AssetId: i,
+            AssetName,
+            AssetType,
+            Location,
+            PurchaseDate,
+            InitialCost,
+            OperationalStatus
+        })
+        i = i + 1;
+        return res.json(asset);
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 module.exports = {
     test,
     registerUser,
     loginUser,
-    getProfile
+    getProfile,
+    getAssets
 };
