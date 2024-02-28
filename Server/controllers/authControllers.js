@@ -3,6 +3,7 @@ const Asset = require("../Models/AssetsCollection");
 const { hashPassword, comparePassword } = require("../Helpers/auth");
 const jwt = require("jsonwebtoken");
 const performanceModel = require("../Models/PerformanceMetricCollections");
+const { calculate_highest_failure, calculate_total_cose, calculate_total_downtime } = require("../Utils/calculate");
 
 let i = 1;
 
@@ -141,11 +142,26 @@ const getPerformance = async (req, res) => {
     }
 }
 
+const getCalculate = async (req, res) => {
+    const highest_failure = calculate_highest_failure();
+    const total_cost = calculate_total_cose();
+    const total_downtime = calculate_total_downtime();
+
+    res.json(
+        {
+            highest_failure,
+            total_cost,
+            total_downtime
+        }
+    )
+}
+
 module.exports = {
     test,
     registerUser,
     loginUser,
     getProfile,
     getAssets,
-    getPerformance
+    getPerformance,
+    getCalculate
 };

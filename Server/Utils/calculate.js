@@ -14,6 +14,7 @@ async function calculate_total_downtime() {
         total_up += cur_up;
     }
     console.log(total_up);
+    return total_up;
 }
 
 async function calculate_total_cose() {
@@ -25,6 +26,7 @@ async function calculate_total_cose() {
         total_cost += cost;
     }
     console.log(total_cost);
+    return total_cost;
 }
 
 async function calculate_highest_failure() {
@@ -39,6 +41,7 @@ async function calculate_highest_failure() {
         }
     }
     console.log(maxFail_id);
+    return maxFail_id;
 }
 
 module.exports = {

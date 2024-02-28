@@ -11,6 +11,8 @@ export default function Dashboard() {
       {!!user && <h2> Hi {user.name}!</h2>}
       <Link to="./assetcollection">Asset Collection</Link>
       <br />
+      <Link to="./calculate">Calculate</Link>
+      <br />
     </div>
   );
 }

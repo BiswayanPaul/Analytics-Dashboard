@@ -10,6 +10,7 @@ import { UserContextProvider } from "../context/userContext.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import AssetsCollection from "./pages/AssetsCollection.jsx";
 import PerformanceMatrixCollection from "./pages/PerformanceMatrixCollection.jsx";
+import Calculate from "./pages/Calculate.jsx";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
@@ -31,6 +32,7 @@ function App() {
           path="/dashboard/performancematrixcollection"
           element={<PerformanceMatrixCollection />}
         />
+        <Route path="/dashboard/calculate" element={<Calculate />} />
       </Routes>
     </UserContextProvider>
   );
