@@ -8,65 +8,92 @@ export default function PerformanceMatrixCollection() {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [data, setData] = useState({
-    AssetName: "",
-    AssetType: "",
-    Location: "",
-    PurchaseDate: "",
-    InitialCost: "",
-    OperationalStatus: "",
+    Downtime: "",
+    MaintainanceCose: "",
+    FailureRate: "",
+    Efficiency: "",
   });
 
-  const assetCollection = async (e) => {
+  const performanceCollection = async (e) => {
     e.preventDefault();
-    const {
-      AssetName,
-      AssetType,
-      Location,
-      PurchaseDate,
-      InitialCost,
-      OperationalStatus,
-    } = data;
+    const { Uptime, Downtime, MaintainanceCose, FailureRate, Efficiency } =
+      data;
     try {
-      const { data } = await axios.post("/dashboard", {
-        AssetName,
-        AssetType,
-        Location,
-        PurchaseDate,
-        InitialCost,
-        OperationalStatus,
-      });
+      const { data } = await axios.post(
+        "/dashboard/performancematrixcollection",
+        {
+          Uptime,
+          Downtime,
+          MaintainanceCose,
+          FailureRate,
+          Efficiency,
+        }
+      );
       if (data.error) {
         toast.error(data.error);
       } else {
         setData({});
-        toast.success("Asset Collection Successful!!");
-        navigate;
+        console.log("done");
+        toast.success("Performance Collection Successful!!");
+        navigate("/dashboard/");
       }
     } catch (e) {
+      console.log("Failed to get the data");
       console.log(e);
     }
   };
 
   return (
     <div>
-      <h2>{user.name}</h2>
-      <form action="" onSubmit={assetCollection}>
-        <label>Email</label>
+      {!!user && <h2> Hi {user.name}!</h2>}
+      <form action="" onSubmit={performanceCollection}>
+        <label>Uptime</label>
         <input
-          type="email"
-          placeholder="Enter Email"
-          value={data.email}
-          onChange={(e) => setData({ ...data, email: e.target.value })}
+          type="text"
+          placeholder="Enter Uptime"
+          value={data.Uptime}
+          onChange={(e) => setData({ ...data, Uptime: e.target.value })}
         />
+        <br />
+        <label>Downtime</label>
+        <input
+          type="text"
+          placeholder="Enter Downtime"
+          value={data.Downtime}
+          onChange={(e) => setData({ ...data, Downtime: e.target.value })}
+        />
+        <br />
 
-        <label>Password</label>
+        <label>MaintainanceCose</label>
         <input
-          type="password"
-          placeholder="Enter Password"
-          value={data.password}
-          onChange={(e) => setData({ ...data, password: e.target.value })}
+          type="number"
+          placeholder="Enter MaintainanceCose"
+          value={data.MaintainanceCose}
+          onChange={(e) =>
+            setData({ ...data, MaintainanceCose: e.target.value })
+          }
         />
-        <button type="submit">Login</button>
+        <br />
+
+        <label>FailureRate</label>
+        <input
+          type="number"
+          placeholder="Enter FailureRate"
+          value={data.FailureRate}
+          onChange={(e) => setData({ ...data, FailureRate: e.target.value })}
+        />
+        <br />
+
+        <label>Efficiency</label>
+        <input
+          type="number"
+          placeholder="Enter Efficiency"
+          value={data.Efficiency}
+          onChange={(e) => setData({ ...data, Efficiency: e.target.value })}
+        />
+        <br />
+
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

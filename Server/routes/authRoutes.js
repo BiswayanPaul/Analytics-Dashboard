@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const { test, registerUser, loginUser, getProfile, getAssets } = require('../controllers/authControllers');
+const { test, registerUser, loginUser, getProfile, getAssets, getPerformance } = require('../controllers/authControllers');
 // middleware
 
 router.use(cors({
@@ -14,6 +14,7 @@ router.get("/", test)
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/dashboard/assetcollection", getAssets);
+router.post("/dashboard/performancematrixcollection", getPerformance);
 router.post("/login", loginUser);
 router.get("/profile", getProfile);
 module.exports = router;

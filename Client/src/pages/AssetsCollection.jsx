@@ -86,7 +86,7 @@ export default function AssetsCollection() {
 
         <label>PurchaseDate</label>
         <input
-          type="PurchaseDate"
+          type="date"
           placeholder="Enter PurchaseDate"
           value={data.PurchaseDate}
           onChange={(e) => setData({ ...data, PurchaseDate: e.target.value })}
@@ -95,7 +95,7 @@ export default function AssetsCollection() {
 
         <label>InitialCost</label>
         <input
-          type="InitialCost"
+          type="number"
           placeholder="Enter InitialCost"
           value={data.InitialCost}
           onChange={(e) => setData({ ...data, InitialCost: e.target.value })}

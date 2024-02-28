@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const Performance = new mongoose.Schema({
     Uptime: {
-        type: Number,
+        type: String,
         required: true
     },
     Downtime: {
-        type: Number,
+        type: String,
         required: true
     },
     MaintainanceCose: {

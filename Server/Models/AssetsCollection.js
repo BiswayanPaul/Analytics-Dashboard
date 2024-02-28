@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const Assets = new mongoose.Schema({
     AssetId: {
-        type: String,
-        required: true
+        type: String
     },
     AssetName: {
         type: String,

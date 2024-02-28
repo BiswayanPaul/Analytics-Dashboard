@@ -2,6 +2,7 @@ const User = require("../Models/user");
 const Asset = require("../Models/AssetsCollection");
 const { hashPassword, comparePassword } = require("../Helpers/auth");
 const jwt = require("jsonwebtoken");
+const performanceModel = require("../Models/PerformanceMetricCollections");
 
 let i = 1;
 
@@ -97,7 +98,7 @@ const getAssets = async (req, res) => {
         const { AssetName, AssetType, Location, PurchaseDate, InitialCost, OperationalStatus } = req.body;
 
         const asset = await Asset.create({
-            AssetId: i,
+            AssetId: Asset._id,
             AssetName,
             AssetType,
             Location,
@@ -113,10 +114,33 @@ const getAssets = async (req, res) => {
     }
 }
 
+const getPerformance = async (req, res) => {
+    try {
+        const { Uptime,
+            Downtime,
+            MaintainanceCose,
+            FailureRate,
+            Efficiency } = req.body;
+
+        const performance = await performanceModel.create({
+            Uptime,
+            Downtime,
+            MaintainanceCose,
+            FailureRate,
+            Efficiency
+        })
+        return res.json(performance);
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 module.exports = {
     test,
     registerUser,
     loginUser,
     getProfile,
-    getAssets
+    getAssets,
+    getPerformance
 };
