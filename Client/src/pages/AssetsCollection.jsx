@@ -46,7 +46,7 @@ export default function AssetsCollection() {
       } else {
         setData({});
         toast.success("Asset Collection Successful!!");
-        navigate("/dashboard/");
+        navigate("/dashboard/performancematrixcollection");
       }
     } catch (e) {
       console.log(e);

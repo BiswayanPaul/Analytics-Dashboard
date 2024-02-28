@@ -122,7 +122,12 @@ const getPerformance = async (req, res) => {
             FailureRate,
             Efficiency } = req.body;
 
+        const id = (await Asset.find().sort({ '_id': -1 }).limit(1))[0];
+        // console.log(id['_id']);
+
+
         const performance = await performanceModel.create({
+            AssetId: id,
             Uptime,
             Downtime,
             MaintainanceCose,
@@ -132,7 +137,7 @@ const getPerformance = async (req, res) => {
         return res.json(performance);
     }
     catch (e) {
-        console.log(e);
+        // console.log(e);
     }
 }
 
