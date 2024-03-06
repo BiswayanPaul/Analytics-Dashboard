@@ -13,7 +13,7 @@ async function calculate_total_downtime() {
         let cur_up = Number(data[i].Downtime);
         total_up += cur_up;
     }
-    console.log(total_up);
+    // console.log(total_up);
     return total_up;
 }
 
@@ -25,7 +25,7 @@ async function calculate_total_cose() {
         let cost = Number(data[i].MaintainanceCose);
         total_cost += cost;
     }
-    console.log(total_cost);
+    // console.log(total_cost);
     return total_cost;
 }
 
@@ -40,7 +40,7 @@ async function calculate_highest_failure() {
             maxFail_id = data[i]._id;
         }
     }
-    console.log(maxFail_id);
+    // console.log(maxFail_id);
     return maxFail_id;
 }
 
