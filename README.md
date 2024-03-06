@@ -2,6 +2,12 @@
 
 I made an authentication system using react & express and a bunch of libraries like bcrypt, jsonwebtoken etc.
 
+## Description
+This is a full-stack project. Here I have included some features like: 
+1. User Authentication
+2. Input of Data (Asset Data)
+3. Operations on that data 
+
 ## Run Locally
 
 Clone the project
